@@ -1,0 +1,6 @@
+trainer.app/.idea/
+trainer.app/__pycache__/
+trainer.app/migrations/
+trainer.app/trainer/__pycache__/
+trainer.app/venv/
+trainer.app/static/
