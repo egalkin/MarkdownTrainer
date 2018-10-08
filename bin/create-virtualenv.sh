@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 virtualenv -p python3 ./trainer.app/.venv
 source ./trainer.app/.venv/bin/activate
