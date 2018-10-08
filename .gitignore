@@ -5,4 +5,4 @@ trainer.app/trainer/__pycache__/
 trainer.app/venv/
 trainer.app/static/
 trainer.app/trainer/api_folder/__pycache__/
-
+trainer.app/.venv/
