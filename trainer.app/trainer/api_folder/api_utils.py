@@ -4,7 +4,7 @@ from random import shuffle
 
 from flask_restful import abort
 
-from trainer import TASK_IMAGE_FOLDER, db
+from trainer import TASK_IMAGE_FOLDER, db, failed_deque
 from trainer.models import Task
 
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
@@ -37,10 +37,15 @@ def upload_images(pictures):
         true_image.save(true_image_url)
         false_image.save(false_image_url)
         db.session.commit()
-    return 'Ok'
+    return True
 
 
 def get_random_list(num_of_elem):
     elems = Task.query.all()
     shuffle(elems)
-    return elems[:num_of_elem] if num_of_elem <= len(elems) else elems
+    return elems[:num_of_elem] if num_of_elem <= len(elems) and num_of_elem != 0 else elems
+
+
+def add_to_deque(failed):
+    failed_deque.append(failed)
+    return failed
