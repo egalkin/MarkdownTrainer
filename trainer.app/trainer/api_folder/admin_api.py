@@ -10,7 +10,7 @@ class TaskCreation(Resource):
     task_schema_list = TaskSchema(many=True)
 
     def get(self):
-        list_lim = 0
+        list_lim = 0 if 'len_of_list' not in trainer_settings else int(trainer_settings['len_of_list'])
         return self.task_schema_list.dump(get_random_list(int(list_lim))).data
 
     def post(self):
