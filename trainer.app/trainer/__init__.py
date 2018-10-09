@@ -27,6 +27,7 @@ settings_parser = reqparse.RequestParser()
 for arg in settings_args:
     settings_parser.add_argument(arg)
 
-TASK_IMAGE_FOLDER = app.config['TASK_IMAGE_FOLDER']
+TASK_IMAGE_PARENT_FOLDER = app.config['TASK_IMAGE_PARENT_FOLDER']
+TASK_RELATIVE_PATH = app.config['TASK_RELATIVE_PATH']
 
 from trainer import views, models, api_routes
