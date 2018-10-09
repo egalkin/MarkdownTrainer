@@ -4,7 +4,7 @@ from random import shuffle
 
 from flask_restful import abort
 
-from trainer import TASK_IMAGE_FOLDER, db, failed_deque
+from trainer import TASK_IMAGE_PARENT_FOLDER, db, failed_deque, TASK_RELATIVE_PATH
 from trainer.models import Task
 
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
@@ -28,12 +28,15 @@ def upload_images(pictures):
         new_task = Task()
         db.session.add(new_task)
         db.session.commit()
-        true_image_url = os.path.join(TASK_IMAGE_FOLDER,
-                                      '{}true_image.{}'.format(new_task.id, extension_true))
-        false_image_url = os.path.join(TASK_IMAGE_FOLDER,
-                                       '{}false_image.{}'.format(new_task.id, extension_false))
-        new_task.set_true_picture(true_image_url)
-        new_task.set_false_picture(false_image_url)
+        true_image_relative_url = os.path.join(TASK_RELATIVE_PATH,
+                                               '{}true_image.{}'.format(new_task.id, extension_true))
+        true_image_url = os.path.join(TASK_IMAGE_PARENT_FOLDER, true_image_relative_url)
+        false_image_relative_url = os.path.join(TASK_RELATIVE_PATH,
+                                                '{}false_image.{}'.format(new_task.id, extension_false))
+        false_image_url = os.path.join(TASK_IMAGE_PARENT_FOLDER, false_image_relative_url)
+
+        new_task.set_true_picture(true_image_relative_url)
+        new_task.set_false_picture(false_image_relative_url)
         true_image.save(true_image_url)
         false_image.save(false_image_url)
         db.session.commit()
