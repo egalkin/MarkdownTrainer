@@ -25,7 +25,7 @@ trainer_settings = dict()
 settings_args = ['deque_step']
 settings_parser = reqparse.RequestParser()
 for arg in settings_args:
-    settings_args.append(arg)
+    settings_parser.add_argument(arg)
 
 TASK_IMAGE_FOLDER = app.config['TASK_IMAGE_FOLDER']
 
