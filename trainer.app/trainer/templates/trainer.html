@@ -2,270 +2,340 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>Copy of Ilyahov markdown trainer</title>
-<meta property="og:type" content="article">
-<meta property="og:url" content="http://maximilyahov.ru/trenazher/">
-<meta property="og:title" content="Тренажер Ильяхова">
-<meta property="og:image" content="http://maximilyahov.ru/trenazher/facebook.png">
-<meta property="og:description" content="Для развития насмотренности у редакторов">
+    <title>Copy of Ilyahov markdown trainer</title>
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="http://maximilyahov.ru/trenazher/">
+    <meta property="og:title" content="Тренажер Ильяхова">
+    <meta property="og:image" content="http://maximilyahov.ru/trenazher/facebook.png">
+    <meta property="og:description" content="Для развития насмотренности у редакторов">
 
 
-<link href="../static/style/boostrap.min.css" rel="stylesheet">
-<script src="../static/style/likely.css"></script>
-<link rel="stylesheet" href="../static/style/likely.css">
+    <link href="../static/style/boostrap.min.css" rel="stylesheet">
+    <script src="../static/style/likely.css"></script>
+    <link rel="stylesheet" href="../static/style/likely.css">
 
 
+    <!--link href="https://fonts.googleapis.com/css?family=Montserrat:900&subset=latin,cyrillic" rel="stylesheet"-->
 
+    <style>
+        BODY {
+            background-color: #e2e2e2;
+            color: black;
+        }
 
-<!--link href="https://fonts.googleapis.com/css?family=Montserrat:900&subset=latin,cyrillic" rel="stylesheet"-->
+        h1 {
+            font-size: 50px;
+            font-weight: 900;
+            font-family: 'Helvetica Neue', 'Helvetica', Arial, PT Sans, sans-serif;
+        }
 
-  <style>
-    BODY {
-      background-color: #e2e2e2;
-      color:black;
-    }
+        h1.mobile {
+            font-size: 30px;
+            font-weight: 900;
+            font-family: 'Helvetica Neue', 'Helvetica', Arial, PT Sans, sans-serif;
+        }
 
-    h1 {
-      font-size: 50px;
-      font-weight: 900;
-      font-family: 'Helvetica Neue', 'Helvetica', Arial, PT Sans, sans-serif;
-    }
+        h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-top: 20px;
+            font-family: 'Helvetica Neue', 'Helvetica', Arial, PT Sans, sans-serif;
+        }
 
-    h1.mobile {
-      font-size: 30px;
-      font-weight: 900;
-      font-family: 'Helvetica Neue', 'Helvetica', Arial, PT Sans, sans-serif;
-    }
+        h2.mobile {
+            font-size: 30px;
+            font-weight: 700;
+            margin-top: 20px;
+            font-family: 'Helvetica Neue', 'Helvetica', Arial, PT Sans, sans-serif;
+        }
 
-    h2 {
-      font-size: 40px;
-      font-weight: 700;
-      margin-top: 20px;
-      font-family: 'Helvetica Neue', 'Helvetica', Arial, PT Sans, sans-serif;
-    }
+        h3 {
+            font-size: 21px;
+            font-family: 'Helvetica Neue', 'Helvetica', Arial, PT Sans;
+            margin-bottom: -3px;
+            margin-top: 20px;
+            line-height: 26px;
+            font-weight: 600
+        }
 
-    h2.mobile {
-      font-size: 30px;
-      font-weight: 700;
-      margin-top: 20px;
-      font-family: 'Helvetica Neue', 'Helvetica', Arial, PT Sans, sans-serif;
-    }
+        p {
+            font-size: 18px;
+            font-family: Helvetica, Arial, PT Sans;
+            margin-top: 10px;
+        }
 
-    h3 {
-      font-size: 21px;
-      font-family: 'Helvetica Neue', 'Helvetica', Arial, PT Sans;
-      margin-bottom: -3px;
-      margin-top: 20px;
-      line-height: 26px;
-      font-weight: 600
-    }
+        img {
+            width: 100%;
+            max-width: 500px;
+        }
 
-    p {
-      font-size: 18px;
-      font-family: Helvetica, Arial, PT Sans;
-      margin-top: 10px;
-    }
+        #winner, #loser {
+            cursor: pointer;
+        }
 
-    img{width:100%; max-width: 500px;}
+        #winner:hover, #loser:hover {
+            cursor: pointer;
+            opacity: 0.8;
+        }
 
-    #winner, #loser{cursor: pointer;}
-    #winner:hover, #loser:hover{cursor: pointer; opacity:0.8;}
+        .winner {
+            border: 3px solid green;
+        }
 
-    .winner{border: 3px solid green;}
-    .loser{border: 3px solid red;}
+        .loser {
+            border: 3px solid red;
+        }
 
+        .err_green {
+            color: #da570f;
+            text-decoration: line-through;
+            text-decoration-сolor: #2aa45d;
+        }
 
-    .err_green{color:#da570f; text-decoration: line-through; text-decoration-сolor: #2aa45d;}
-    .added_green{color:#2aa45d;}
+        .added_green {
+            color: #2aa45d;
+        }
 
-    .error{
-color: #dA570f;
-font-style: normal;
-background: url(http://glvrd.ru/static/underline.svg) 0 100% repeat-x;
-border-radius: .2em;
-padding-bottom: 2px;
-margin: 0px;}
+        .error {
+            color: #dA570f;
+            font-style: normal;
+            background: url(http://glvrd.ru/static/underline.svg) 0 100% repeat-x;
+            border-radius: .2em;
+            padding-bottom: 2px;
+            margin: 0px;
+        }
 
-.example{font-size: 100%;}
+        .example {
+            font-size: 100%;
+        }
 
-img{max-width:100%;}
+        img {
+            max-width: 100%;
+        }
 
-.notopmargin{margin-top: 0px;}
-.topmargin{margin-top: 60px;}
-.topmargin30{margin-top: 30px;}
+        .notopmargin {
+            margin-top: 0px;
+        }
 
-a:link, a:active{
-text-decoration: none;
-color: #0060a0;
-border-bottom: 1px solid;
-border-bottom-color: rgba(0, 96, 160, 0.2);
-}
+        .topmargin {
+            margin-top: 60px;
+        }
 
-a:visited{color: #0060a0;
-border-bottom-color: rgba(0, 96, 160, 0.2);}
+        .topmargin30 {
+            margin-top: 30px;
+        }
 
-a:hover{
-  color: #d04000;
-  border-bottom-color: rgba(208, 64, 0, 0.2);
-}
+        a:link, a:active {
+            text-decoration: none;
+            color: #0060a0;
+            border-bottom: 1px solid;
+            border-bottom-color: rgba(0, 96, 160, 0.2);
+        }
 
-a img{padding-bottom: 10px;}
+        a:visited {
+            color: #0060a0;
+            border-bottom-color: rgba(0, 96, 160, 0.2);
+        }
 
-#progressbar{
-  width:100%; height:5px; background-color: white; margin-top:10px;
-}
-#progress{background-color: green; height:100%;}
+        a:hover {
+            color: #d04000;
+            border-bottom-color: rgba(208, 64, 0, 0.2);
+        }
 
-  </style>
+        a img {
+            padding-bottom: 10px;
+        }
 
+        #progressbar {
+            width: 100%;
+            height: 5px;
+            background-color: white;
+            margin-top: 10px;
+        }
 
+        #progress {
+            background-color: green;
+            height: 100%;
+        }
+
+    </style>
 
 
 </head>
 
 <body>
 
-    <div class="container">
+<div class="container">
 
 
-      <div class="row topmargin">
+    <div class="row topmargin">
 
         <div class="col-xs-12"><h1>Markdown skill trainer</h1></div>
         <div class="col-xs-12 col-sm-10 col-md-8 col-lg-7">
-          <p>Copy of Ilyahov Markdown trainer.</p>
+            <p>Copy of Ilyahov Markdown trainer.</p>
         </div>
 
-      </div>
+    </div>
 
-      <div class="row topmargin30">
-        <div class="col-xs-6"><div id="slot_1"></div></div>
-        <div class="col-xs-6"><div id="slot_2"></div></div>
-      </div>
+    <div class="row topmargin30">
+        <div class="col-xs-6">
+            <div id="slot_1"></div>
+        </div>
+        <div class="col-xs-6">
+            <div id="slot_2"></div>
+        </div>
+    </div>
 
-      <div class="row topmargin30">
-        <div class="col-xs-12"><button style="font-size: 200%; width:100%; padding:15px 20px 20px 20px" onclick="run_tier()">Еще</button>
+    <div class="row topmargin30">
+        <div class="col-xs-12">
+            <button style="font-size: 200%; width:100%; padding:15px 20px 20px 20px" onclick="run_tier()">Еще</button>
 
 
-          <div id="progressbar"><div id="progress" style="width:0%"></div></div>
-
+            <div id="progressbar">
+                <div id="progress" style="width:0%"></div>
+            </div>
 
 
         </div>
 
-      </div>
+    </div>
 
-      <script>
-        var verbose=false;
-        var slots=['slot_1','slot_2'];
-        var request_url = "http://localhost:5000/api/v1/tasks";var request_url = "http://localhost:5000/api/v1/tasks";
+    <script>
+        var verbose = false;
+        var use_queue = false;
+        var slots = ['slot_1', 'slot_2'];
+        var get_task_url = "http://localhost:5000/api/v1/tasks";
+        var queue_url = "http://localhost:5000/api/v1/failed";
+        var get_settings_url = "http://localhost:5000/api/v1/settings";
 
-        var taksk = httpGet();
+        var settings = httpGet(get_settings_url);
+        var deque_step = settings['deque_step'];
+        var tasks = httpGet(get_task_url);
         var index = 0;
 
 
         var answer_given = false;
 
 
-        function fetch_a_couple_from(obj){
-          var result=[];
-          console.log()
-          if(verbose){console.log('Returning valid URLs');};
-          result[0]=obj[index]["true_picture_url"];
-          result[1]=obj[index]["false_picture_url"];
-          index++;
-          return result;
+        function fetch_a_couple_from(obj) {
+            var result = [];
+            var dict = obj[index]
+            if (index % deque_step == 0) {
+                var pop_elem = httpGet(queue_url);
+                if (pop_elem != null) {
+                    dic = pop_elem;
+                    console.log(dic)
+                    use_queue = true
+                }
+            }
+            result[0] = dict["true_picture_url"];
+            result[1] = dict["false_picture_url"];
+            return result;
         }
 
-        function coinflip(bias){
-          if(bias == null){
-            bias=50;
-            if(verbose){console.log('Flipping a coin, no bias defined, assuming 50');}
-          }else{
-            if(verbose){console.log('Flipping a coin with bias '+bias);}
-          }
-          var seed=Math.floor(Math.random()*100);
-          if(seed<=bias) {
-            return true}
-          else {
-            return false};
+        function coinflip(bias) {
+            if (bias == null) {
+                bias = 50;
+            } else {
+
+            }
+            var seed = Math.floor(Math.random() * 100);
+            if (seed <= bias) {
+                return true
+            }
+            else {
+                return false
+            }
+            ;
         }
 
-        function ilyahov_approves(){
-            render_image('approval2.png',slots[0],'approval1');
-            render_image('approval.png',slots[1],'approval2');
-          }
-
-        function make_progress(howmuch){
-          current=document.getElementById('progress').style.width;
-          current=parseInt(current);
-          if (howmuch == null){
-            howmuch=1;
-          }
-          if(current>=99){
-            updated=100;
-            ilyahov_approves();
-          }else{
-            updated=current+howmuch;
-          }
-          document.getElementById('progress').style.width=updated+'%';
+        function ilyahov_approves() {
+            render_image('approval2.png', slots[0], 'approval1');
+            render_image('approval.png', slots[1], 'approval2');
         }
 
-        function verify(id){
-          if (answer_given==false){
-            answer_given=true;
-            if (id=='winner'){
-              document.getElementById(id).className='winner';
-              make_progress(1+Math.random()*3);
-            }else{
-              taksk=httpGet();
-              index = 0;
-              document.getElementById(id).className='loser';
-              make_progress(-1);
-          }
-          }else{
-            run_tier();
-            answer_given=false;
-          }
+        function make_progress(howmuch) {
+            current = document.getElementById('progress').style.width;
+            current = parseInt(current);
+            if (howmuch == null) {
+                howmuch = 1;
+            }
+            if (current >= 99) {
+                updated = 100;
+                ilyahov_approves();
+            } else {
+                updated = current + howmuch;
+            }
+            document.getElementById('progress').style.width = updated + '%';
         }
 
-        function render_image(url,where,id){
-          toRender='<img id=\"'+id+'\" src=\"'+url+'\" onClick=\"verify(this.id)\">';
-          document.getElementById(where).innerHTML=toRender;
+        function verify(id) {
+            if (answer_given == false) {
+                answer_given = true;
+                if (id == 'winner') {
+                    document.getElementById(id).className = 'winner';
+                    make_progress(1 + Math.random() * 3);
+                    if (index % deque_step != 0 || use_queue == false) {
+                        index++;
+                    }
+                    use_queue = false;
+                } else {
+                    httpPost(queue_url, tasks[index]);
+                    tasks = httpGet(get_task_url);
+                    index = 0;
+                    document.getElementById(id).className = 'loser';
+                    make_progress(-1);
+                }
+            } else {
+                run_tier();
+                answer_given = false;
+            }
         }
 
-        function render_pair(obj){
-          images=fetch_a_couple_from(obj);
-          if(coinflip()){
-            render_image(images[0],slots[0],'winner');
-            render_image(images[1],slots[1],'loser');
-          }else{
-            render_image(images[0],slots[1],'winner');
-            render_image(images[1],slots[0],'loser');
-          }
+        function render_image(url, where, id) {
+            toRender = '<img id=\"' + id + '\" src=\"' + url + '\" onClick=\"verify(this.id)\">';
+            document.getElementById(where).innerHTML = toRender;
         }
 
-        function httpGet() {
+        function render_pair(obj) {
+            images = fetch_a_couple_from(obj);
+            if (coinflip()) {
+                render_image(images[0], slots[0], 'winner');
+                render_image(images[1], slots[1], 'loser');
+            } else {
+                render_image(images[0], slots[1], 'winner');
+                render_image(images[1], slots[0], 'loser');
+            }
+        }
+
+        function httpGet(url) {
             var xmlHttp = new XMLHttpRequest();
-            xmlHttp.open( "GET", request_url, false ); // false for synchronous request
-            xmlHttp.send( null );
-            console.log(JSON.parse(xmlHttp.responseText));
+            xmlHttp.open("GET", url, false); // false for synchronous request
+            xmlHttp.send(null);
             return JSON.parse(xmlHttp.responseText);
         }
 
-        function run_tier(tier){
-          answer_given = false;
-          render_pair(taksk)
+        function httpPost(url, failed) {
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("POST", url, true);
+            xmlHttp.setRequestHeader("Content-Type", "text/plain");
+            xmlHttp.send(JSON.stringify(failed));
+        }
+
+        function run_tier(tier) {
+            answer_given = false;
+            render_pair(tasks)
         }
 
         run_tier();
 
 
-      </script>
-    </div>
+    </script>
+</div>
 
 </body>
 </html>
