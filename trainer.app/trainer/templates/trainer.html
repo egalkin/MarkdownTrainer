@@ -180,15 +180,6 @@
     </div>
 
     <div class="row topmargin30">
-        <div class="col-xs-6">
-            <div id="slot_1"></div>
-        </div>
-        <div class="col-xs-6">
-            <div id="slot_2"></div>
-        </div>
-    </div>
-
-    <div class="row topmargin30">
         <div class="col-xs-12">
             <button style="font-size: 200%; width:100%; padding:15px 20px 20px 20px" onclick="run_tier()">Еще</button>
 
@@ -202,6 +193,17 @@
 
     </div>
 
+    <div class="row topmargin30">
+        <div class="col-xs-6">
+            <div id="slot_1"></div>
+        </div>
+        <div class="col-xs-6">
+            <div id="slot_2"></div>
+        </div>
+    </div>
+
+
+
     <script>
         var use_queue = false;
         var slots = ['slot_1', 'slot_2'];
@@ -212,6 +214,7 @@
         var settings = httpGet(get_settings_url);
         var deque_step = parseInt(settings['deque_step']);
         var num_of_steps = parseInt(settings['num_of_steps']);
+        var penalty = parseInt(settings['penalty']);
         var tasks = httpGet(get_task_url);
         var index = 0;
 
@@ -221,7 +224,7 @@
 
         function fetch_a_couple_from(obj) {
             var result = [];
-            var dict = obj[index]
+            var dict = obj[index % num_of_steps]
             if (index % deque_step == 0) {
                 var pop_elem = httpGet(queue_url);
                 if (pop_elem != null) {
@@ -286,7 +289,7 @@
                     tasks = httpGet(get_task_url);
                     index = 0;
                     document.getElementById(id).className = 'loser';
-                    make_progress(-(100/num_of_steps));
+                    make_progress(-(100/num_of_steps*penalty));
                 }
             } else {
                 run_tier();
