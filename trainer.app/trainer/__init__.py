@@ -16,13 +16,8 @@ migrate = Migrate(app, db)
 ma = Marshmallow(app)
 failed_deque = deque()
 
-failed_args = ['false_picture_url', 'true_picture_url', 'id']
-failed_parser = reqparse.RequestParser()
-for arg in failed_args:
-    failed_parser.add_argument(arg)
-
 trainer_settings = dict()
-settings_args = ['deque_step']
+settings_args = ['deque_step', 'num_of_steps', 'len_of_list']
 settings_parser = reqparse.RequestParser()
 for arg in settings_args:
     settings_parser.add_argument(arg)
