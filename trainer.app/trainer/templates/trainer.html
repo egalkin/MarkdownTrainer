@@ -213,7 +213,8 @@
         var get_settings_url = "http://localhost:5000/api/v1/settings";
 
         var settings = httpGet(get_settings_url);
-        var deque_step = settings['deque_step'];
+        var deque_step = parseInt(settings['deque_step']);
+        var num_of_steps = parseInt(settings['num_of_steps']);
         var tasks = httpGet(get_task_url);
         var index = 0;
 
@@ -253,20 +254,20 @@
             ;
         }
 
-        function ilyahov_approves() {
-            render_image('approval2.png', slots[0], 'approval1');
-            render_image('approval.png', slots[1], 'approval2');
+        function congrat() {
+            console.log("Congratulation")
         }
-
+        
         function make_progress(howmuch) {
             current = document.getElementById('progress').style.width;
             current = parseInt(current);
             if (howmuch == null) {
-                howmuch = 1;
+                howmuch = 100 / num_of_steps;
             }
             if (current >= 99) {
                 updated = 100;
-                ilyahov_approves();
+                congrat()
+
             } else {
                 updated = current + howmuch;
             }
@@ -278,7 +279,7 @@
                 answer_given = true;
                 if (id == 'winner') {
                     document.getElementById(id).className = 'winner';
-                    make_progress(1 + Math.random() * 3);
+                    make_progress(100/num_of_steps);
                     if (index % deque_step != 0 || use_queue == false) {
                         index++;
                     }
@@ -288,7 +289,7 @@
                     tasks = httpGet(get_task_url);
                     index = 0;
                     document.getElementById(id).className = 'loser';
-                    make_progress(-1);
+                    make_progress(-(100/num_of_steps));
                 }
             } else {
                 run_tier();
