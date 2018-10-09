@@ -1,6 +1,6 @@
 from flask import request
 from flask_restful import Resource, reqparse
-
+import json
 from trainer import failed_deque, failed_parser, trainer_settings, settings_parser
 from trainer.api_folder.api_utils import upload_images, get_random_list, add_to_deque
 from trainer.marshmallow_schemas import TaskSchema
@@ -27,8 +27,8 @@ class FailedDeque(Resource):
             return None
 
     def post(self):
-        args = failed_parser.parse_args()
-        return add_to_deque(args), 200
+        print(request.data)
+        return add_to_deque(json.loads(request.data)), 200
 
 
 class TrainerSettings(Resource):
