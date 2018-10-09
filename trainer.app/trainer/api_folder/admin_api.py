@@ -1,7 +1,7 @@
 from flask import request
 from flask_restful import Resource, reqparse
 import json
-from trainer import failed_deque, failed_parser, trainer_settings, settings_parser
+from trainer import failed_deque, trainer_settings, settings_parser
 from trainer.api_folder.api_utils import upload_images, get_random_list, add_to_deque
 from trainer.marshmallow_schemas import TaskSchema
 
