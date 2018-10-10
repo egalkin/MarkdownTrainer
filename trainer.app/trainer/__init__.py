@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask
 from flask_marshmallow import Marshmallow
 from flask_migrate import Migrate
@@ -24,5 +26,9 @@ for arg in settings_args:
 
 TASK_IMAGE_PARENT_FOLDER = app.config['TASK_IMAGE_PARENT_FOLDER']
 TASK_RELATIVE_PATH = app.config['TASK_RELATIVE_PATH']
+
+if not os.path.exists('{}/{}'.format(TASK_IMAGE_PARENT_FOLDER, TASK_RELATIVE_PATH)):
+    os.makedirs('{}/{}'.format(TASK_IMAGE_PARENT_FOLDER, TASK_RELATIVE_PATH))
+
 
 from trainer import views, models, api_routes
