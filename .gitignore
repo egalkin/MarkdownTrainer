@@ -3,6 +3,6 @@ trainer.app/__pycache__/
 trainer.app/migrations/
 trainer.app/trainer/__pycache__/
 trainer.app/venv/
-trainer.app/static/tasks/
+trainer.app/trainer/static/tasks/
 trainer.app/trainer/api_folder/__pycache__/
 trainer.app/.venv/
