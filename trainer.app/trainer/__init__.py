@@ -17,7 +17,7 @@ ma = Marshmallow(app)
 failed_deque = deque()
 
 trainer_settings = dict()
-settings_args = ['deque_step', 'num_of_steps', 'len_of_list']
+settings_args = ['deque_step', 'num_of_steps', 'len_of_list', 'penalty']
 settings_parser = reqparse.RequestParser()
 for arg in settings_args:
     settings_parser.add_argument(arg)
