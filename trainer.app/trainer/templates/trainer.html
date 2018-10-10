@@ -224,7 +224,7 @@
 
         function fetch_a_couple_from(obj) {
             var result = [];
-            var dict = obj[index % num_of_steps]
+            var dict = obj[index % tasks.length]
             if (index % deque_step == 0) {
                 var pop_elem = httpGet(queue_url);
                 if (pop_elem != null) {
@@ -289,7 +289,6 @@
                     tasks = httpGet(get_task_url);
                     index = 0;
                     document.getElementById(id).className = 'loser';
-                    console.log(-(100/num_of_steps*penalty));
                     make_progress(-(100/num_of_steps*penalty));
                 }
             } else {
